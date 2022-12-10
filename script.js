@@ -56,7 +56,15 @@ function getWeatherData(){
         console.log(success);
         let {latitude, longnitude} = success.coords;
         //after getting the lat and long we will fetch the api
-        fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longnitude}&exclude=hourly,minutely&appid=${API_KEY}`)
+        //this whole api then returns a response using the . operator
+        fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longnitude}&exclude=hourly,minutely&units=metric&appid=${API_KEY}`).then(res=>res.json()).then(data=>{
+        //now we have gotten a response from the api
+        // so now we will use this data response to call the data below using the function
+        console.log(data);
+        showWeatherData(data);//this will show the humidity, speed, time etc
+        
+        })
+
 
 
     })
