@@ -8,4 +8,5 @@ Creating  a weather showing site using OpenWeatherMap's 5 day weather forecast d
 https://azwadfawadhasan.github.io/CSE309Assignment3/
 
 ### Pictures and Videos
-![backgroundImage](https://user-images.githubusercontent.com/106096161/206868090-291a03c3-576f-4cf8-b7bd-6e102dc8e30f.jpg)
+
+![ScreenShot](https://user-images.githubusercontent.com/106096161/206868128-042e1a50-0856-4b89-80c7-9278b4ef2cd2.jpg)
