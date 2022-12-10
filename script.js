@@ -36,16 +36,25 @@ setInterval(() => {
     const hoursIn12HrFormat = hour >= 13 ? hour %12: hour//converting 24 into 12 hrs
     const minutes = time.getMinutes();
     const ampm = hour >=12 ? 'PM' : 'AM'
-
+    //setting up the Time and date
+    //using string concatination
+    //here, this means if the hourcs are less than 10 then 0 will be added along wiht hrs mins and AM/PM 
     timeEl.innerHTML = (hoursIn12HrFormat < 10? '0'+hoursIn12HrFormat : hoursIn12HrFormat) + ':' + (minutes < 10? '0'+minutes: minutes)+ ' ' + `<span id="am-pm">${ampm}</span>`
-
+    //updating the date
     dateEl.innerHTML = days[day] + ', ' + date+ ' ' + months[month]
 
 }, 1000);
 
 getWeatherData()
 function getWeatherData () {
+    // we will use the navigator to get the geo location and based on that we will get the latitude and longnitude
     navigator.geolocation.getCurrentPosition((success) => {
+        //getCurrentPosition() will have a successcallback, error callback
+        //after getting the lat and long we will fetch the api
+        //this whole api then returns a response using the . operator
+         //now we have gotten a response from the api
+        // so now we will use this data response to call the data below using the function
+        //showWeatherData(data);this will show the humidity, speed, time etc
         
         let {latitude, longitude } = success.coords;
 
