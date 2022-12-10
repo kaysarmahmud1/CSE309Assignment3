@@ -1,3 +1,5 @@
+//gathering all the element through by get element by id
+
 const timeEl = document.getElementById('time');
 const dateEl = document.getElementById('date');
 const currentWeatherItemsEl = document.getElementById('current-weather-items');
@@ -6,13 +8,25 @@ const countryEl = document.getElementById('country');
 const weatherForecastEl = document.getElementById('weather-forecast');
 const currentTempEl = document.getElementById('current-temp');
 
-
+//now we need to update all our data
+//first we will do it without the use of weather api
+//using a setinterval function will be called after a particular interval till the interval is cleared
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-
+//const API_KEY = '4a56f5f786f5452554fd6c63b1928d87';//my API KEY not working
+//new api key
 const API_KEY ='49cc8c821cd2aff9af04c9f98c36eb74';
+//for api we need to call the url which contains the lat, lon and path that we want to explore
+//to call this api we will use a different fucntion
 
+
+//this setInterval function is a call-back function
+//this function will be called every 1 second
 setInterval(() => {
+
+    
+
+    //creating an array for days and months
     const time = new Date();
     const month = time.getMonth();
     const date = time.getDate();
