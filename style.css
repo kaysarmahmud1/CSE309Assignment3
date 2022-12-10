@@ -14,3 +14,17 @@ body{
     height: 100vh;
     font-family: 'Poppins', sans-serif;
 }
+
+.container{
+    padding: 20px 70px;
+    color:#fff;
+}
+
+.current-info{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.date-container{
+    font-weight: 100;
+}
