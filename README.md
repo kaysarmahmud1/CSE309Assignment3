@@ -4,6 +4,10 @@ This repo contains the assignment 3 of webapp
 ## About
 Creating  a weather showing site using OpenWeatherMap's 5 day weather forecast data. 
 
+### How to run this project
+Download the project/ clone the project from github
+Open index.html (Using VScode's live server for optimal performance)
+
 ### Hosting Link
 https://azwadfawadhasan.github.io/CSE309Assignment3/
 
