@@ -13,7 +13,8 @@ const currentTempEl = document.getElementById('current-temp');
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-const API_KEY = '4a56f5f786f5452554fd6c63b1928d87';
+//const API_KEY = '4a56f5f786f5452554fd6c63b1928d87';//my API KEY
+const API_KEY ='49cc8c821cd2aff9af04c9f98c36eb74';
 
 //for api we need to call the url which contains the lat, lon and path that we want to explore
 //to call this api we will use a different fucntion
@@ -57,7 +58,7 @@ function getWeatherData(){
         let {latitude, longnitude} = success.coords;
         //after getting the lat and long we will fetch the api
         //this whole api then returns a response using the . operator
-        fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longnitude}&exclude=hourly,minutely&units=metric&appid=${API_KEY}`).then(res=>res.json()).then(data=>{
+        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&units=metric&appid=${API_KEY}`).then(res=>res.json()).then(data=>{
         //now we have gotten a response from the api
         // so now we will use this data response to call the data below using the function
         console.log(data);
@@ -68,4 +69,42 @@ function getWeatherData(){
 
 
     })
+}
+
+
+//this will show the humidity, speed, time etc
+function showWeatherData(){
+    let {humidity, pressure, sunrise, sunset, wind_speed} = data.current;
+    
+    timezone.innerHTML = data.timezone;
+    countryEl.innerHTML = data.lat + 'N ' + data.lon+'E'
+
+    currentWeatherItemsEl.innerHTML = 
+    `<div class="weather-item">
+        <div>Humidity</div>
+        <div>${humidity}%</div>
+    </div>
+    <div class="weather-item">
+        <div>Pressure</div>
+        <div>${pressure}</div>
+    </div>
+    <div class="weather-item">
+        <div>Wind Speed</div>
+        <div>${wind_speed}</div>
+    </div>
+
+    <div class="weather-item">
+        <div>Sunrise</div>
+        <div>${window.moment(sunrise * 1000).format('HH:mm a')}</div>
+    </div>
+    <div class="weather-item">
+        <div>Sunset</div>
+        <div>${window.moment(sunset*1000).format('HH:mm a')}</div>
+    </div>
+    
+    
+    `;
+
+
+    
 }
