@@ -15,6 +15,9 @@ const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', '
 
 const API_KEY = '4a56f5f786f5452554fd6c63b1928d87';
 
+//for api we need to call the url which contains the lat, lon and path that we want to explore
+//to call this api we will use a different fucntion
+
 setInterval(()=>{//this setInterval function is a call-back function
     //this function will be called every 1 second
 
@@ -44,3 +47,17 @@ setInterval(()=>{//this setInterval function is a call-back function
 
 },1000);
 
+
+getWeatherData();
+
+function getWeatherData(){
+    // we will use the navigator to get the geo location and based on that we will get the latitude and longnitude
+    navigator.geolocation.getCurrentPosition((success) =>{//getCurrentPosition() will have a successcallback, error callback
+        console.log(success);
+        let {latitude, longnitude} = success.coords;
+        //after getting the lat and long we will fetch the api
+        fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longnitude}&exclude=hourly,minutely&appid=${API_KEY}`)
+
+
+    })
+}
