@@ -69,6 +69,10 @@ function getWeatherData () {
 
 function showWeatherData (data){
     let {humidity, pressure, sunrise, sunset, wind_speed} = data.current;
+    //the original sunrise and sunset values are given in UNIX units so we can't pass them directly into the div
+    //in order to format this we need to use the moment cdn js script package
+    //this script has been copied into index.html
+
 
     timezone.innerHTML = data.timezone;
     countryEl.innerHTML = data.lat + 'N ' + data.lon+'E'
@@ -89,6 +93,7 @@ function showWeatherData (data){
 
     <div class="weather-item">
         <div>Sunrise</div>
+        <!--we multiply this with thousand to get the correct time for sunrise and sunset-->
         <div>${window.moment(sunrise * 1000).format('HH:mm a')}</div>
     </div>
     <div class="weather-item">
@@ -99,12 +104,22 @@ function showWeatherData (data){
     
     `;
 
+
+
+// we will loop through the daily array
+// in the daily array-> the 0 position will be the current day's data
     let otherDayForcast = ''
     data.daily.forEach((day, idx) => {
-        if(idx == 0){
+        if(idx == 0){//current day has a different html and css design than all the other days
             currentTempEl.innerHTML = `
             <img src="http://openweathermap.org/img/wn//${day.weather[0].icon}@4x.png" alt="weather icon" class="w-icon">
             <div class="other">
+                <!--
+                   **** day.dt means day's date
+                    using ddd we set the format
+                    for the icon we use the 10d icon from the openweather map
+                    //we use this icon using weather[0].icon 
+                -->
                 <div class="day">${window.moment(day.dt*1000).format('dddd')}</div>
                 <div class="temp">Night - ${day.temp.night}&#176;C</div>
                 <div class="temp">Day - ${day.temp.day}&#176;C</div>
