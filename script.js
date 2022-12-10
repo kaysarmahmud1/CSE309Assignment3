@@ -13,6 +13,8 @@ const currentTempEl = document.getElementById('current-temp');
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
+const API_KEY = '4a56f5f786f5452554fd6c63b1928d87';
+
 setInterval(()=>{//this setInterval function is a call-back function
     //this function will be called every 1 second
 
@@ -33,7 +35,10 @@ setInterval(()=>{//this setInterval function is a call-back function
 
     //setting up the Time and date
     //using string concatination
-    timeEl.innerHTML = hoursIn12HrFormat + ':' +  minutes + ':' + `<span id="am-pm">${ampm}</span>`
+    timeEl.innerHTML = hoursIn12HrFormat + ':' +  minutes + ':' + `<span id="am-pm">${ampm}</span>`;
+
+    //updating the date
+    dateEl.innerHTML = days[day]+', '+date+' '+months[month];
  
 
 

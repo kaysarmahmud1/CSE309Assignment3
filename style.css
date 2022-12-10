@@ -2,8 +2,8 @@
 
 *{
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    margin:0;
+    padding:0;
 }
 
 body{
@@ -17,7 +17,7 @@ body{
 
 .container{
     padding: 20px 70px;
-    color: black;
+    color:#fff;
 }
 
 .current-info{
@@ -28,7 +28,6 @@ body{
 .date-container{
     font-weight: 100;
 }
-
 .date-container .time{
     font-size: 70px;
 }
@@ -70,6 +69,7 @@ body{
     display: flex;
     justify-content: space-between;
 }
+
 
 .future-forecast{
     background: rgba(24,24,27,0.8);
@@ -118,7 +118,7 @@ body{
     align-items: center;
     justify-content: center;
     margin: 0 10px;
-    border: 1px solid black;
+    border: 1px solid #eee;
     padding: 15px;
     border-radius: 10px;
     background: rgba(0,0,0,0.2)
@@ -135,6 +135,7 @@ body{
     font-weight: 100;
     font-size: 12px;
 }
+
 
 @media only screen and  (max-width:730px){
     
