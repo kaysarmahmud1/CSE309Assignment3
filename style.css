@@ -17,7 +17,7 @@ body{
 
 .container{
     padding: 20px 70px;
-    color:#fff;
+    color: black;
 }
 
 .current-info{
@@ -118,7 +118,7 @@ body{
     align-items: center;
     justify-content: center;
     margin: 0 10px;
-    border: 1px solid #eee;
+    border: 1px solid black;
     padding: 15px;
     border-radius: 10px;
     background: rgba(0,0,0,0.2)
