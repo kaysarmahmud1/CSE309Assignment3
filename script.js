@@ -51,15 +51,21 @@ setInterval(()=>{//this setInterval function is a call-back function
 
 getWeatherData()
 function getWeatherData () {
-    navigator.geolocation.getCurrentPosition((success) => {
-        
+    // we will use the navigator to get the geo location and based on that we will get the latitude and longnitude
+    navigator.geolocation.getCurrentPosition((success) => {//getCurrentPosition() will have a successcallback, error callback
+        //after getting the lat and long we will fetch the api
+        //this whole api then returns a response using the . operator
+         //now we have gotten a response from the api
+        // so now we will use this data response to call the data below using the function
+        //showWeatherData(data);this will show the humidity, speed, time etc
         let {latitude, longitude } = success.coords;
 
-        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&units=metric&appid=${API_KEY}`).then(res => res.json()).then(data => {
+        fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&units=metric&appid=${API_KEY}`).then(res => res.json()).then(data => {
 
         console.log(data)
         showWeatherData(data);
         })
+
 
     })
 }
@@ -92,13 +98,38 @@ function getWeatherData(){
 
 //this will show the humidity, speed, time etc
 function showWeatherData (data){
+    //making all the variables for humidity,humidity, pressure, sunrise, sunset, wind_speed
     let {humidity, pressure, sunrise, sunset, wind_speed} = data.current;
 
     timezone.innerHTML = data.timezone;
     countryEl.innerHTML = data.lat + 'N ' + data.lon+'E'
+    //taking elements from html
+    currentWeatherItemsEl.innerHTML = 
+    `<div class="weather-item">
+        <div>Humidity</div>
+        <div>${humidity}%</div>
+    </div>
+    <div class="weather-item">
+        <div>Pressure</div>
+        <div>${pressure}</div>
+    </div>
+    <div class="weather-item">
+        <div>Wind Speed</div>
+        <div>${wind_speed}</div>
+    </div>
 
-    currentWeatherItemsEl.innerHTML = `<div class="weather-item"><div>Humidity</div><div>${humidity}%</div></div><div class="weather-item"><div>Pressure</div><div>${pressure}</div></div><div class="weather-item"><div>Wind Speed</div><div>${wind_speed}</div></div><div class="weather-item"><div>Sunrise</div><div>${window.moment(sunrise * 1000).format('HH:mm a')}</div></div><div class="weather-item"><div>Sunset</div><div>${window.moment(sunset*1000).format('HH:mm a')}</div></div>`;
-/*
+    <div class="weather-item">
+        <div>Sunrise</div>
+        <div>${window.moment(sunrise * 1000).format('HH:mm a')}</div>
+    </div>
+    <div class="weather-item">
+        <div>Sunset</div>
+        <div>${window.moment(sunset*1000).format('HH:mm a')}</div>
+    </div>
+    
+    
+    `;
+
     let otherDayForcast = ''
     data.daily.forEach((day, idx) => {
         if(idx == 0){
@@ -128,7 +159,7 @@ function showWeatherData (data){
     weatherForecastEl.innerHTML = otherDayForcast;
 
 
-    */
+    
 }
 
 
