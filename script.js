@@ -20,8 +20,15 @@ setInterval(()=>{//this setInterval function is a call-back function
     const date = time.getDate();
     const day = time.getDay();
     const hour = time.getHours();//this hour give hour in 24 hour format
+    const hoursIn12HrFormat = hour>=13? hour%12: hour;
     const minutes = time.getMinutes();
+    const ampm = hour>= 12?'PM':'AM';
 
+
+    //setting up the Time and date
+    //using string concatination
+    timeEl.innerHTML = hoursIn12HrFormat + ':' +  minutes + ':' + `<span id="am-pm">${ampm}</span>`
+ 
 
 
 },1000);
